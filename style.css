@@ -29,7 +29,7 @@ header, main, footer {
 	min-width: 788px;
 	max-width: 1000px;
 	margin: 0 auto;
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 }
 
 header, nav {
@@ -38,13 +38,13 @@ header, nav {
 
 header  {
 	min-height: 174px;
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 }
 
 .logo {
 	width: 150px;
 	min-height: 170px;
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 }
 
 .sidebar, .image {
@@ -54,12 +54,9 @@ header  {
 }
 
 .search {
-	position: absolute;
 	width: 150px;
 	height: 348px;
 	border: 1px solid gray;
-	top: 0;
-	right: 0;
 }
 
 main {
@@ -67,27 +64,55 @@ main {
 	min-height: 348px;
 	display: flex;
 	flex-direction: row;
+}
+
+.flex {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
 	flex-wrap: wrap;
 }
 
 .banner, .about {
-	width: 60%;
+	width: 70%;
 	height: 174px;
 	border: 1px solid gray;
-	background: #999;
+}
+
+input {
+	width: 140px;
 }
 
 @media screen and (max-width: 788px) {
-	.search {
-		width: 100%;
-		position: relative;
-	}
 	header, main, footer {
 		min-width: 320px;
 		width: 100%;
 	}
-	.about, .banner {
-		width: calc(70% + 150px/0.5);
+}
+
+@media screen and (max-width: 664px) {
+	main {
+		flex-wrap: wrap;
+	}
+
+	.search {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.banner, .about, .sidebar, .image {
+		width: 100%;
+	}
+
+	header {
+		flex-wrap: wrap;
+	}
+	
+	.logo, .topnav {
+		width: 100%;
 	}
 }
 
