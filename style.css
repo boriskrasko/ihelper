@@ -1,0 +1,93 @@
+:root {
+	--blue: rgb(0, 204, 255);
+	--red: #f42;
+	--auto: 0 auto;
+}
+
+* {
+	margin: 0.5px;
+	padding: 0.5px;
+	box-sizing: border-box;
+	/*border: 1px solid gray;*/
+}
+
+a {
+	text-decoration: none;
+	color: #2a2a2a;
+}
+
+ul {
+	list-style: none;
+}
+
+body {
+	background: url(img/_bg.jpg) top center no-repeat;
+}
+
+header, main, footer {
+	width: 70%;
+	min-width: 788px;
+	max-width: 1000px;
+	margin: 0 auto;
+	border: 1px solid gray;
+}
+
+header, nav {
+	display: flex;
+}
+
+header  {
+	min-height: 174px;
+	border: 1px solid gray;
+}
+
+.logo {
+	width: 150px;
+	min-height: 170px;
+	border: 1px solid gray;
+}
+
+.sidebar, .image {
+	width: 150px;
+	height: 174px;
+	border: 1px solid gray;
+}
+
+.search {
+	position: absolute;
+	width: 150px;
+	height: 348px;
+	border: 1px solid gray;
+	top: 0;
+	right: 0;
+}
+
+main {
+	position: relative;
+	min-height: 348px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.banner, .about {
+	width: 60%;
+	height: 174px;
+	border: 1px solid gray;
+	background: #999;
+}
+
+@media screen and (max-width: 788px) {
+	.search {
+		width: 100%;
+		position: relative;
+	}
+	header, main, footer {
+		min-width: 320px;
+		width: 100%;
+	}
+	.about, .banner {
+		width: calc(70% + 150px/0.5);
+	}
+}
+
