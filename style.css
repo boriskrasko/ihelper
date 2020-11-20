@@ -1,3 +1,5 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,900&display=swap');*/
+
 :root {
 	--blue: rgb(0, 204, 255);
 	--red: #f42;
@@ -16,6 +18,10 @@ a {
 	color: #2a2a2a;
 }
 
+br {
+	display: none;
+}
+
 ul {
 	list-style: none;
 }
@@ -27,6 +33,7 @@ button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	cursor: pointer;
 }
 
 input {
@@ -60,6 +67,7 @@ h1 {
 	font-size: 20px;
 	font-weight: normal;
 	margin-left: 14px;
+	/*transition: 0.7s opacity, 0.4s transform ease-in-out;*/
 }
 
 h2 {
@@ -67,6 +75,7 @@ h2 {
 	font-weight: normal;
 	line-height: 20px;
 	margin-left: 14px;
+	transition: 0.7s opacity, 0.4s transform ease-in-out;
 }
 
 .logo {
@@ -108,14 +117,13 @@ h2 {
 }
 
 .func, .social, .lang {
-	width: 150px;
+	width: 104px;
 }
 
 nav button {
 	width: 20px;
 	height: 20px;
 	margin-left: 4px;
-	cursor: pointer;
 	transition: background 0.1s;
 	border: #ddd9 solid 0;
 	border-radius: 2px;
@@ -141,7 +149,8 @@ nav button:hover {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-left: 20%;
+	margin: var(--auto);
+	padding-top: 10px;
 }
 
 .microsoft img {
@@ -170,6 +179,7 @@ nav:nth-child(2) {
 
 header section {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 header section div {
@@ -184,7 +194,7 @@ main {
 	justify-content: center;
 }
 
-.sidebar, .image {
+.sidebar, .front, .back {
 	width: 150px;
 	height: 174px;
 }
@@ -218,14 +228,30 @@ main {
 
 .sidebar .wrapper  a:hover,
 .topmenu  a:hover {
-	color: #0cf;
+	color: #09f;
 	transition: color 0.1s;
 }
 
 .search {
 	width: 150px;
 	height: 348px;
-	/*border: 1px solid gray;*/
+}
+
+.search ul {
+	font-size: 11px;
+	width: 122px;
+	margin: 4px;
+	padding: 4px;
+	cursor: pointer;
+	color: #222;
+	border: #ddd solid 1px;
+	border-radius: 2px;
+	background: #fff1;
+}
+
+.search ul:hover {
+	background: #0af;
+	color: #fff;
 }
 
 .flex {
@@ -239,6 +265,10 @@ main {
 	width: 70%;
 	height: 174px;
 	/*border: 1px solid gray;*/
+}
+
+.banner, .sidebar {
+	margin-bottom: 20px;
 }
 
 .banner {
@@ -259,8 +289,61 @@ main {
 	background-size: contain;
 }
 
-input {
+.about {
+	display: flex;
+}
+
+.front img, .back img {
+	width: 100%;
+}
+
+.front, .back {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.description {
+	height: 174px;
+	width: 74%;
+	display: grid;
+}
+
+.about {
+	border-bottom: 5px solid var(--red);
+}
+
+.back {
+	border-top: 5px solid var(--blue);
+}
+
+.description ul {
+	height: 120px;
+}
+
+.btns {
+	height: 50px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.btn {
+	min-width: 82px;
+	height: 24px;
+	margin: 10px;
+	border: gray solid 1px;
+	border-radius: 2px;
+	background: #0cf;
+}
+
+.btn:hover {
+	border: #bbb solid 1px;
+	background: #0af;
+}
+
+.search input {
 	width: 140px;
+	margin-bottom: 10px;
 }
 
 footer {
@@ -283,6 +366,23 @@ footer {
 		min-width: 320px;
 		width: 100%;
 	}
+
+	h2 {
+		font-size: 24px;
+	}
+
+	h1 {
+		opacity: 0;
+		/*transform: translateY(5px);*/
+	}
+
+	.about {
+		width: 100%;
+	}
+
+	.back {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 664px) {
@@ -290,16 +390,43 @@ footer {
 		flex-wrap: wrap;
 	}
 
+	.about {
+		border-bottom: 2px solid var(--red);
+		margin-bottom: 20px;
+	}
+
 	.search {
 		width: 100%;
-		display: flex;
-		justify-content: center;
+		height: auto;
+		display: grid;
+		text-align: center;
+	}
+
+	.search ul {
+		width: 70%;
+		font-size: 14px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 7px;
+	}
+
+	.microsoft {
+		position: absolute;
+		right: 20px;
 	}
 }
 
 @media screen and (max-width: 520px) {
-	.banner, .about, .sidebar, .sidebar .wrapper, .image {
+	.banner, .about, .sidebar, .sidebar .wrapper {
 		width: 100%;
+	}
+
+	h2 {
+		font-size: 24px;
+	}
+
+	h1 {
+		opacity: 1;
 	}
 
 	.logo {
@@ -342,4 +469,79 @@ footer {
 		border-top: 1px solid #4448;
 		border-bottom: 1px solid #4448;
 	}
+
+	.topmenu:hover {
+		border-top: 1px solid rgb(253, 65, 0);
+		border-bottom: 1px solid rgb(106, 197, 0);
+	}
+
+	.sidebar .wrapper {
+		border-top: 2px solid #4448;
+	}
+
+	.sidebar .wrapper:hover {
+		border-top: 2px solid #000a;
+	}
+
+	.about, .description {
+		height: 240px;
+	}
+
+	br {
+		display: block;
+	}
+
+	.btns {
+		margin-top: 40px;
+	}
 }
+
+@media screen and (max-width: 400px) {
+	.topmenu li:not(:first-child) {
+		display: none;
+	}
+
+	.topmenu {
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 310px) {
+	.microsoft {
+		position: relative;
+		margin-left: 40%;
+	}
+}
+
+.price-enter-active,
+.price-leave-active {
+	transition: all .2s;
+}
+
+.price-enter,
+.price-leave-to {
+	transform: translateY(5px);
+	opacity: .1;
+}
+
+.item-enter-active,
+.item-leave-active {
+	transition: all .2s;
+}
+
+.item-enter,
+.item-leave-to  {
+	transform: translateY(5px);
+	opacity: .1;
+}
+
+.htmlcontent-enter-active,
+.htmlcontent-leave-active {
+	transition: all .2s;
+}
+
+.htmlcontent-enter,
+.htmlcontent-leave-to {
+	opacity: .1;
+}
+

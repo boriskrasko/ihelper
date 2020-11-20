@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>iHelp</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 <body>
 	<header>
@@ -52,7 +54,7 @@
 			</section>
 		</div>
 	</header>
-	<main>
+	<main id="app">
 		<div class="flex">
 			<div class="sidebar">
 				<div class="wrapper">
@@ -71,29 +73,40 @@
 				
 			</div>
 			<div class="about">
-				
+				<div class="front">
+					<img v-bind:src="item.image">
+				</div>
+				<div class="description">
+					<ul>
+		                <li><strong>{{item.title}}</strong></li>
+		                <li>Model - <strong>{{item.model}}</strong></li>
+		                <li>Processor - <br><strong>{{item.processor}}</strong></li>
+		                <li>Memory - <br><strong>{{item.memory}}</strong></li>
+		                <li>Graphics - <br><strong>{{item.graphic}}</strong></li>
+		                <li>
+		                	<transition vue-role="transition" name="price">
+		                		<span v-if="priceVisible">{{item.price}} BYN</span>
+		               		</transition>
+		                </li>
+                	</ul>
+                	<div class="btns">
+                		<button class="btn" v-on:click="modalVisible = !modalVisible;">
+                			{{specBtnText}}
+                		</button>
+                        <button class="btn" v-if="btnPriceVisible" v-on:click="priceVisible = !priceVisible">
+                        	{{priceBtnText}}
+                        </button>
+                	</div>
+				</div>
 			</div>
-			<div class="image">
-				
+			<div class="back">
+				<img v-bind:src="item.imageBack">
 			</div>
 		</div>
 		<div class="search">
 				<input placeholder="Search:" type="" name="">
-			<ul>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
-				<li>model__</li>
+			<ul v-for="(item, index) of filteredItems" v-on:click="selectItem(item, index)"
+			:class="{'active': selectedItemIndex === index}">{{item.model}}
 			</ul>			
 		</div>
 	</main>
@@ -134,7 +147,6 @@
 			</nav>
 		</div>
 	</footer>
-
-<script src="main.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
