@@ -104,7 +104,7 @@
 			</div>
 		</div>
 		<div class="search">
-				<input placeholder="Search:" type="" name="">
+				<input placeholder="Search:" type="" name="" v-model="search">
 			<ul v-for="(item, index) of filteredItems" v-on:click="selectItem(item, index)"
 			:class="{'active': selectedItemIndex === index}">{{item.model}}
 			</ul>			
@@ -114,25 +114,47 @@
 		<div class="navbar">
 			<nav>
 				<ul>
-					<li><a href="">Consulting on the purchase of computer hardware and software</a></li>
+					<!-- <li><a href="">Consulting on the purchase of computer hardware and software</a></li> -->
+					<li><a href="">Optimizing download speed</a></li>
 					<li><a href="">Hard disk data recovery</a></li>
 					<li><a href="">Remote computer assistance</a></li>
 					<li><a href="">System administration</a></li>
 					<li><a href="">Antivirus support</a></li>
 					<li><a href="">Cloud storage</a></li>
+				</ul>
+				<ul>
 					<li><a href="">Archiving and backup</a></li>
 					<li><a href="">Cleaning and tweaking the registry</a></li>
 					<li><a href="">LAN design</a></li>
-					<li><a href="">Optimizing download speed</a></li>
 					<li><a href="">Installing and configuring SLL certificates</a></li>
 					<li><a href="">FTP servers and protocols management</a></li>
 					<li><a href="">Internal optimization of SPA and sites</a></li>
-					<li><a href="">Turnkey IT solutions creation</a></li>
+					<!-- <li><a href="">Turnkey IT solutions creation</a></li> -->
 				</ul>
 			</nav>
 		</div>
-		<div class="contact"></div>
-		<div class="footnav">
+		<div class="contact">
+			<div class="head">
+				<div class="dell">
+					<img src="img/dell.png">
+				</div>
+			</div>
+			<div class="foot">
+				<div class="partner">
+					 <img src="img/dell-emc.png">
+				</div>
+				<div class="location">
+					<address>"Ayhelper Bai"<br>
+                           Dzerzhinsky, 5<br>
+                           220036 Minsk, BY Belarus<br>
+                           +375298933459<br><a href="mailto:admin@ihelper.by">
+                           admin@ihelper.by</a><br>
+                           <a href="https://ihelper.by">ihelper.by</a>
+                        </address>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="footnav">
 			<nav>
 				<ul>
 					<li><a href="">Windows</a></li>
@@ -145,7 +167,7 @@
 					<li><a href="">Support</a></li>
 				</ul>
 			</nav>
-		</div>
+		</div> -->
 	</footer>
 <script src="app.js"></script>
 </body>
