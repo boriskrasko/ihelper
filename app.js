@@ -31,14 +31,21 @@ backSide:   true,
 intelProcessor:   false,
 search:  '',
 activeColor: '#222',
+isActive: false,
+isScale: false,
 },
 
 methods: {
 selectItem(item,  index)   {
 this.selectedItemIndex  =  index;
 this.item   =  item
+},
+toggleClass: function(event) {
+       this.isActive = !this.isActive;
+},
+toggleScale: function(event) {
+       this.isScale = !this.isScale;
 }
-
 },
 computed:   {
 priceBtnText() {
@@ -47,6 +54,7 @@ return   this.priceVisible ?  'Hide' :  'Price'
 specBtnText()  {
 return   this.modalVisible ?  'Close'   :  'Specs'
 },
+
 
 filteredItems()   {
 var   self  =  this

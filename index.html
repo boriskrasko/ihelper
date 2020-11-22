@@ -7,6 +7,11 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
+<style>
+	.partner {
+		background: #444;
+	}
+</style>
 <body>
 	<header>
 		<div class="logo">
@@ -55,6 +60,44 @@
 		</div>
 	</header>
 	<main id="app">
+		<transition name="modal">
+			<div class="modal" v-if="modalVisible">
+				<div class="btns">
+	        		<button class="close" v-on:click="modalVisible = !modalVisible; isActive = !isActive">
+	        			<img src="svg/close.svg">
+	        		</button>
+	            </div>
+	            <div class="content">
+	            	<div>
+	            		<strong>{{item.model}}</strong>
+                        <strong>Processor:</strong>
+                        <ul>
+                           <li>Intel® Celeron® G4900 (2&nbsp;MB, 3,1&nbsp;GHz)</li>
+                           <li>Intel® Pentium® G5400 (4&nbsp;MB, 3,7&nbsp;GHz)</li>
+                           <li>Intel® Core™ i3-8100 (6&nbsp;MB, 3,60&nbsp;GHz)</li>
+                           <li>Intel® Core™ i5-8400 (9&nbsp;MB, do 4,0 GHz)</li>
+                           <li>Intel® Core™ i7-8700 (12&nbsp;MB, do 4,6&nbsp;GHz)</li>
+                        </ul>
+                        <strong>Memory</strong>
+                        <ul>
+                           <li>4&nbsp;GB DDR4 (4&nbsp;GB × 1)</li>
+                           <li>8&nbsp;GB DDR4 2400&nbsp;MHz (4&nbsp;GB&nbsp;×&nbsp;2</li>
+                           <li>12&nbsp;GB DDR4 2400&nbsp;MHz (4&nbsp;GB + 8&nbsp;GB)</li>
+                           <li>16&nbsp;GB DDR4 2400&nbsp;MHz (16&nbsp;GB&nbsp;×&nbsp;1</li>
+                           <li>24&nbsp;GB DDR4 2400&nbsp;MHz (8&nbsp;GB + 16&nbsp;GB)</li>
+                           <li>32&nbsp;GB DDR4 2400&nbsp;MHz (16&nbsp;GB × 2)</li>
+                        </ul>
+                        <strong>Graphics</strong>
+                        <ul>
+                           <li>Intel® HD Graphics 610/630</li>
+                           <li>NVIDIA® GeForce® GT 710 2&nbsp;GB DDR3</li>
+                        </ul>
+	            	</div>
+	            	<div><img v-bind:src="item.imageBack"></div>
+	            </div>
+	        </div>
+	    </transition>
+		</div>
 		<div class="flex">
 			<div class="sidebar">
 				<div class="wrapper">
@@ -68,15 +111,14 @@
 					</nav>
 				</div>
 			</div>
-			<div class="banner">
+			<div class="banner" v-bind:class="[isActive ? 'blur' : '']">
 				<div class="man"></div>
-				
 			</div>
 			<div class="about">
-				<div class="front">
-					<img v-bind:src="item.image">
+				<div class="front" v-on:click="isScale = !isScale; isActive = !isActive">
+					<img v-bind:src="item.image" v-bind:class="[isScale ? 'scale' : '']">
 				</div>
-				<div class="description">
+				<div class="description" v-bind:class="[isActive ? 'blur' : '']">
 					<ul>
 		                <li><strong>{{item.title}}</strong></li>
 		                <li>Model - <strong>{{item.model}}</strong></li>
@@ -90,7 +132,7 @@
 		                </li>
                 	</ul>
                 	<div class="btns">
-                		<button class="btn" v-on:click="modalVisible = !modalVisible;">
+                		<button class="btn" v-on:click="modalVisible = !modalVisible; isActive = !isActive">
                 			{{specBtnText}}
                 		</button>
                         <button class="btn" v-if="btnPriceVisible" v-on:click="priceVisible = !priceVisible">
@@ -99,7 +141,7 @@
                 	</div>
 				</div>
 			</div>
-			<div class="back">
+			<div class="back" v-bind:class="[isActive ? 'blur' : '']">
 				<img v-bind:src="item.imageBack">
 			</div>
 		</div>
@@ -111,63 +153,72 @@
 		</div>
 	</main>
 	<footer>
-		<div class="navbar">
-			<nav>
-				<ul>
-					<!-- <li><a href="">Consulting on the purchase of computer hardware and software</a></li> -->
-					<li><a href="">Optimizing download speed</a></li>
-					<li><a href="">Hard disk data recovery</a></li>
-					<li><a href="">Remote computer assistance</a></li>
-					<li><a href="">System administration</a></li>
-					<li><a href="">Antivirus support</a></li>
-					<li><a href="">Cloud storage</a></li>
-				</ul>
-				<ul>
-					<li><a href="">Archiving and backup</a></li>
-					<li><a href="">Cleaning and tweaking the registry</a></li>
-					<li><a href="">LAN design</a></li>
-					<li><a href="">Installing and configuring SLL certificates</a></li>
-					<li><a href="">FTP servers and protocols management</a></li>
-					<li><a href="">Internal optimization of SPA and sites</a></li>
-					<!-- <li><a href="">Turnkey IT solutions creation</a></li> -->
-				</ul>
-			</nav>
-		</div>
-		<div class="contact">
-			<div class="head">
-				<div class="dell">
-					<img src="img/dell.png">
+		<div class="wrapper">
+			<div class="navbar">
+				<nav>
+					<ul>
+						<li><a href="">Consulting</a></li>
+						<li><a href="">Optimizing download speed</a></li>
+						<li><a href="">Hard disk data recovery</a></li>
+						<li><a href="">Remote computer assistance</a></li>
+						<li><a href="">System administration</a></li>
+						<li><a href="">Antivirus support</a></li>
+						<li><a href="">Cloud storage</a></li>
+						<li><a href="">Archiving and backup</a></li>
+						<li><a href="">Cleaning and tweaking the registry</a></li>
+						<li><a href="">LAN design</a></li>
+						<li><a href="">Installing and configuring SLL certificates</a></li>
+						<li><a href="">FTP servers and protocols management</a></li>
+						<li><a href="">Internal optimization of SPA and sites</a></li>
+						<li><a href="">Turnkey IT solutions creation</a></li>
+						<li><a href="">Item navbar menu</a></li>
+						<li><a href="">Item navbar menu</a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="contact">
+				<div class="head">
+					<div class="dell">
+						<img src="img/dell.png">
+					</div>
+				</div>
+				<div class="foot">
+					<div class="partner">
+						 <img src="img/dell-emc.png">
+					</div>
+					<div class="location">
+						<address>"Ayhelper Bai"<br>
+	                           Dzerzhinsky, 5<br>
+	                           220036 Minsk, BY Belarus<br>
+	                           +375298933459<br><a href="mailto:admin@ihelper.by">
+	                           admin@ihelper.by</a><br>
+	                           <a href="https://ihelper.by">ihelper.by</a>
+	                    </address>
+					</div>
 				</div>
 			</div>
-			<div class="foot">
-				<div class="partner">
-					 <img src="img/dell-emc.png">
-				</div>
-				<div class="location">
-					<address>"Ayhelper Bai"<br>
-                           Dzerzhinsky, 5<br>
-                           220036 Minsk, BY Belarus<br>
-                           +375298933459<br><a href="mailto:admin@ihelper.by">
-                           admin@ihelper.by</a><br>
-                           <a href="https://ihelper.by">ihelper.by</a>
-                        </address>
-				</div>
-			</div>
 		</div>
-		<!-- <div class="footnav">
+		<div class="footnav">
 			<nav>
-				<ul>
-					<li><a href="">Windows</a></li>
-					<li><a href="">macOS</a></li>
-					<li><a href="">Linux</a></li>
+				<ul class="os">
+					<li><hr></li>
+					<li><img src="svg/logo/windows_logo.svg"><a href="">Windows</a></li>
+					<li><img src="svg/logo/apple_logo.svg"><a href="">macOS</a></li>
+					<li><img src="svg/logo/linux_logo.svg"><a href="">Linux</a></li>
 				</ul>
-				<ul>
+				<!-- <ul class="footmenu">
 					<li><a href="">Development</a></li>
 					<li><a href="">Service</a></li>
 					<li><a href="">Support</a></li>
-				</ul>
+				</ul> -->
 			</nav>
-		</div> -->
+		</div>
+		<div class="basement">
+			<p>
+                As a Microsoft IoT partner, we can offer any programs and services available on the international IT market. The products and services presented on the site are only part of our offer. We also develop unique IT solutions for companies and individual entrepreneurs. Our programmers are ready to solve a problem of any complexity: from setting up a PC to developing powerful applications and optimizing online businesses.<a href="">Contact us.</a>
+            </p>
+            <p class="copyright">2011 - 2020 © iHelper.by</p>
+		</div>
 	</footer>
 <script src="app.js"></script>
 </body>
