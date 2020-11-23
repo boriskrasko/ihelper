@@ -61,7 +61,7 @@
   bottom: -400px;
   height: 400px;
   display: none;
-  background: url(img/_bg.jpg);
+  background: url(img/bg.jpg);
   background-size: contain;
 }
 
@@ -140,8 +140,8 @@ body {
 	font-size: 14px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #5a5a5a;
-	/*background: url(img/_bg_dark.jpg) top center no-repeat;*/
-	background: url(img/_bg.jpg) top center no-repeat;
+	/*background: url(img/bg_dark.jpg) top center no-repeat;*/
+	background: url(img/bg.jpg) top center no-repeat;
 }
 
 header, main, footer {
@@ -938,14 +938,15 @@ footer .wrapper {
 		margin-left: -20px;
 	}
 
-  .modal {
+  	.modal {
 	    left: 0;
 	    right: 0;
-	    top: -40px;
+	    top: 150px;
 	    height: 470px;
 	    width: 100%;
 	    background: #fffd;
 	    backdrop-filter: blur(6px);
+	    z-index: 11;
   	}
 
 	.content {
@@ -996,10 +997,14 @@ footer .wrapper {
 	}
 
 	.navbar nav ul  {
-		width: 80%;
+		width: 85%;
 		margin: 0 auto;
 	}
 
+	.layer {
+	    height: 1280px;
+	    bottom: -1280px;
+  	}
 }
 
 @media screen and (max-width: 310px) {
