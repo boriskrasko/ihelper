@@ -33,6 +33,7 @@ search:  '',
 activeColor: '#222',
 isActive: false,
 isScale: false,
+isBackCase: false
 },
 
 methods: {
@@ -45,6 +46,9 @@ toggleClass: function(event) {
 },
 toggleScale: function(event) {
        this.isScale = !this.isScale;
+},
+toggleBackCase: function(event) {
+       this.isBackCase = !this.isBackCase;
 }
 },
 computed:   {

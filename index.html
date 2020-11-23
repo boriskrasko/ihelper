@@ -61,7 +61,7 @@
 	</header>
 	<main id="app">
 		<transition name="modal">
-			<div class="modal" v-if="modalVisible">
+			<div class="modal" v-if="modalVisible" v-on:click="modalVisible = false; isActive = false;">
 				<div class="btns">
 	        		<button class="close" v-on:click="modalVisible = !modalVisible; isActive = !isActive">
 	        			<img src="svg/close.svg">
@@ -99,7 +99,10 @@
 	    </transition>
 		</div>
 		<div class="flex">
-			<div class="sidebar">
+      <div class="processor" v-bind:class="[(modalVisible || isScale || isBackCase) ? 'intel' : '']">
+          <img src="img/processor-intel.png">
+        </div>
+      <div class="sidebar" v-bind:class="[(modalVisible || isScale || isBackCase) ? 'blur' : '']">
 				<div class="wrapper">
 					<nav>
 						<ul>
@@ -111,38 +114,38 @@
 					</nav>
 				</div>
 			</div>
-			<div class="banner" v-bind:class="[isActive ? 'blur' : '']">
+			<div class="banner" v-bind:class="[(modalVisible || isScale || isBackCase) ? 'blur' : '']">
 				<div class="man"></div>
 			</div>
 			<div class="about">
-				<div class="front" v-on:click="isScale = !isScale; isActive = !isActive">
+				<div class="front" v-on:click="isScale = !isScale; isActive = !isActive; isBackCase = false; modalVisible = false">
 					<img v-bind:src="item.image" v-bind:class="[isScale ? 'scale' : '']">
 				</div>
-				<div class="description" v-bind:class="[isActive ? 'blur' : '']">
+				<div class="description" v-bind:class="[(modalVisible || isScale || isBackCase) ? 'blur' : '']">
 					<ul>
-		                <li><strong>{{item.title}}</strong></li>
-		                <li>Model - <strong>{{item.model}}</strong></li>
-		                <li>Processor - <br><strong>{{item.processor}}</strong></li>
-		                <li>Memory - <br><strong>{{item.memory}}</strong></li>
-		                <li>Graphics - <br><strong>{{item.graphic}}</strong></li>
-		                <li>
-		                	<transition vue-role="transition" name="price">
-		                		<span v-if="priceVisible">{{item.price}} BYN</span>
-		               		</transition>
-		                </li>
-                	</ul>
-                	<div class="btns">
-                		<button class="btn" v-on:click="modalVisible = !modalVisible; isActive = !isActive">
-                			{{specBtnText}}
-                		</button>
-                        <button class="btn" v-if="btnPriceVisible" v-on:click="priceVisible = !priceVisible">
-                        	{{priceBtnText}}
-                        </button>
-                	</div>
+            <li><strong>{{item.title}}</strong></li>
+            <li>Model - <strong>{{item.model}}</strong></li>
+            <li>Processor - <br><strong>{{item.processor}}</strong></li>
+            <li>Memory - <br><strong>{{item.memory}}</strong></li>
+            <li>Graphics - <br><strong>{{item.graphic}}</strong></li>
+            <li>
+            	<transition vue-role="transition" name="price">
+            		<span v-if="priceVisible">{{item.price}} BYN</span>
+           		</transition>
+            </li>
+        	</ul>
+        	<div class="btns">
+        		<button class="btn" v-on:click="modalVisible = !modalVisible; isActive = !isActive">
+        			{{specBtnText}}
+        		</button>
+                <button class="btn" v-if="btnPriceVisible" v-on:click="priceVisible = !priceVisible">
+                	{{priceBtnText}}
+                </button>
+        	</div>
 				</div>
 			</div>
-			<div class="back" v-bind:class="[isActive ? 'blur' : '']">
-				<img v-bind:src="item.imageBack">
+			<div class="back" v-bind:class="[(modalVisible || isScale)  ? 'blur' : '']" v-on:click="isBackCase = !isBackCase; isActive = !isActive; isScale = false">
+				<img v-bind:src="item.imageBack" v-bind:class="[isBackCase ? 'scaleBackCase' : '']">
 			</div>
 		</div>
 		<div class="search">
@@ -150,7 +153,89 @@
 			<ul v-for="(item, index) of filteredItems" v-on:click="selectItem(item, index)"
 			:class="{'active': selectedItemIndex === index}">{{item.model}}
 			</ul>			
-		</div>
+    </div>
+    <div class="layer" v-bind:class="[(isScale || isBackCase) ? 'block' : '']">
+      <div class="details">
+        <div>
+        <p>The perfect solution for the office.</p>
+        <p><strong>Processor</strong></p>
+        <ul>
+          <li>Intel® 8th Generation Celeron® G4900 (2M Cache, 3.1 GHz)</li>
+          <li>8th Generation Intel® Pentium® G5400 (4MB Cache, 3.7 GHz)</li>
+          <li>8th Generation Intel® Core ™ i3-8100 (6MB Cache, 3.60 GHz)</li>
+          <li>8th Generation Intel® Core ™ i5-8400 (9MB Cache, up to 4.0 GHz)</li>
+          <li>8th Generation Intel® Core ™ i7-8700 (12MB Cache, up to 4.6 GHz)</li>
+        </ul>
+        <p><strong>Operating system</strong></p>
+        <ul>
+          <li>Windows® 10 (64-bit)&nbsp;</li>
+          <li>Windows® 10 Professional (64 bit)&nbsp;</li>
+          <li>Windows® 10 National Academic STF (64 bit)&nbsp;</li>
+          <li>Ubuntu</li>
+        </ul>
+        <p><strong>Memory</strong></p>
+        <ul>
+          <li>4 GB DDR4 (4 GB x 1)</li>
+          <li>8 GB DDR4 2400 MHz (4 GB x 2 or 8 GB x 1)</li>
+          <li>12 GB DDR4 2400 MHz (4 GB + 8 GB)</li>
+          <li>16 GB DDR4 2400 MHz (16 GB × 1 or 8 GB × 2)</li>
+          <li>24 GB DDR4 2400 MHz (8 GB + 16 GB)</li>
+          <li>32 GB DDR4 2400 MHz (16 GB x 2)</li>
+        </ul>
+        <p><strong>Graphics Card</strong></p>
+        <ul>
+          <li>Integrated Intel® HD Graphics 610/630</li>
+          <li>NVIDIA® GeForce® GT 710 with 2GB DDR3 memory</li>
+        </ul>
+        </div>
+      <div>
+        <p><strong>Dimensions</strong></p>
+        <ul>
+          <li>Height: 290mm × Width: 92.6mm × Depth: 293mm</li>
+          <li>Weight: 4.81 kg</li>
+        </ul>
+        <p><strong>Security</strong></p>
+        <ul>
+          <li>McAfee Security Center</li>
+          <li>Physical Security - Kensington anti-theft lock slot in chassis and lock</li>
+          <li>TPM 2.0 module (hardware and software)</li>
+          <li>Microsoft Windows Bitlocker&nbsp;</li>
+          <li>Wipe data from local hard drives via BIOS (secure erase function)&nbsp;</li>
+          <li>Computrace BIOS Agent Support - Manage Computrance and Proactive systems</li>
+        </ul>
+        <p><strong>Standard I / O ports</strong></p>
+        <p><strong>Front:</strong></p>
+        <ul>
+          <li>2 USB 3.0 ports</li>
+          <li>1 universal audio jack</li>
+          <li>1 5-in-1 memory card reader</li>
+        </ul>
+        <p><strong>Back:</strong>&nbsp;</p>
+        <ul>
+          <li>4 USB 2.0 ports</li>
+          <li>1 Gigabit Ethernet port</li>
+          <li>1 HDMI</li>
+          <li>1 VGA</li>
+          <li>1 triple audio jack supporting 5.1 surround sound</li>
+        </ul>
+        <p><strong>Power</strong></p>
+        <ul>
+          <li>standard 240W power supply</li>
+        </ul>
+      </div>
+      <div class="basement">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p class="copyright">2020 © iHelper.by</p>
+    </div>
+      </div>
+    </div>
 	</main>
 	<footer>
 		<div class="wrapper">
@@ -188,12 +273,12 @@
 					</div>
 					<div class="location">
 						<address>"Ayhelper Bai"<br>
-	                           Dzerzhinsky, 5<br>
-	                           220036 Minsk, BY Belarus<br>
-	                           +375298933459<br><a href="mailto:admin@ihelper.by">
-	                           admin@ihelper.by</a><br>
-	                           <a href="https://ihelper.by">ihelper.by</a>
-	                    </address>
+	                    Dzerzhinsky, 5<br>
+	                    220036 Minsk, BY Belarus<br>
+	                    +375298933459<br><a href="mailto:admin@ihelper.by">
+	                    admin@ihelper.by</a><br>
+	            <a href="https://ihelper.by">ihelper.by</a>
+	          </address>
 					</div>
 				</div>
 			</div>
@@ -206,18 +291,13 @@
 					<li><img src="svg/logo/apple_logo.svg"><a href="">macOS</a></li>
 					<li><img src="svg/logo/linux_logo.svg"><a href="">Linux</a></li>
 				</ul>
-				<!-- <ul class="footmenu">
-					<li><a href="">Development</a></li>
-					<li><a href="">Service</a></li>
-					<li><a href="">Support</a></li>
-				</ul> -->
 			</nav>
 		</div>
 		<div class="basement">
 			<p>
-                As a Microsoft IoT partner, we can offer any programs and services available on the international IT market. The products and services presented on the site are only part of our offer. We also develop unique IT solutions for companies and individual entrepreneurs. Our programmers are ready to solve a problem of any complexity: from setting up a PC to developing powerful applications and optimizing online businesses.<a href="">Contact us.</a>
-            </p>
-            <p class="copyright">2011 - 2020 © iHelper.by</p>
+         As a Microsoft IoT partner, we can offer any programs and services available on the international IT market. The products and services presented on the site are only part of our offer. We also develop unique IT solutions for companies and individual entrepreneurs. Our programmers are ready to solve a problem of any complexity: from setting up a PC to developing powerful applications and optimizing online businesses.<a href="">Contact us.</a>
+      </p>
+      <p class="copyright">2020 © iHelper.by</p>
 		</div>
 	</footer>
 <script src="app.js"></script>
