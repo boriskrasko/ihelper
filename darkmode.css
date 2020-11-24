@@ -1,0 +1,42 @@
+.dark-wallpaper {
+	background: #000;
+}
+
+.dark-background {
+	background: url(img/bg_dark.jpg);
+	background-size: contain;
+}
+
+.light-background {
+	background: url(img/bg.jpg);
+}
+
+.dark {
+	background-image: url(img/bg_dark.jpg);
+	background-size: contain;
+}
+
+.light {
+	background-image: url(img/bg.jpg);
+}
+
+.dark-font {
+	color: #fffc;
+}
+
+.light-font {
+	color: #000 !important;
+}
+
+.dark-ul {
+	color: #fffc !important;
+}
+
+.dark-li  a {
+	color: #fffc !important;
+}
+
+.dark-li a:hover {
+	color: #0af !important;
+}
+
