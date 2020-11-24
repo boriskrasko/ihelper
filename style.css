@@ -61,8 +61,6 @@
   bottom: -400px;
   height: 400px;
   display: none;
-  background: url(img/bg.jpg);
-  background-size: contain;
 }
 
 .block {
@@ -80,12 +78,14 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  margin-top: 50px;
-  padding: 10px;
+  padding: 60px 10px 0;
   flex-wrap: wrap;
   column-gap: 20px;
-  border-top: 3px dotted #bbb;
-  border-bottom: 3px dotted #bbb;
+  background: #fff;
+  background-image: url(img/bg.jpg);
+  background-size: contain;
+  border-top: 2px dotted #bbb;
+  border-bottom: 2px dotted #bbb;
 }
 
 .details div:not(:last-child) {
@@ -134,14 +134,19 @@ button {
 
 input {
 	outline: 0;
+	background: #ffffff07;
+}
+
+img {
+
 }
 
 body {
 	font-size: 14px;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #5a5a5a;
-	/*background: url(img/bg_dark.jpg) top center no-repeat;*/
 	background: url(img/bg.jpg) top center no-repeat;
+	transition: 0.6s background;
 }
 
 header, main, footer {
@@ -173,6 +178,15 @@ h2 {
 	margin-left: 14px;
 }
 
+.active {
+	color: #09f !important;
+}
+
+.search .active {
+	color: #fff !important;
+	background-color: #0af !important;
+}
+
 .logo {
 	width: 150px;
 	min-height: 170px;
@@ -183,24 +197,28 @@ h2 {
 }
 
 .logo-min {
-		display: none;
-	}
+	display: none;
+}
 
 .logo > div {
 	width: 112px;
 	height: 120px
+	margin: 0 10px;
 }
 
 .logo > div img {
-	width: 100%;
+	width: 110px;
+	margin: 0 10px;
 }
 
 .title {
+	width: 80%;
 	font-size: 24px;
 	letter-spacing: 2.4px;
 }
 
 .subtitle {
+	width: 80%;
 	font-size: 11px;
 	letter-spacing: 0.5px;
 	white-space: nowrap;
@@ -215,6 +233,14 @@ h2 {
 	width: 104px;
 }
 
+.lang li {
+	margin-left: 75%;
+}
+
+.lang button img {
+	width: 120%;
+}
+
 nav button {
 	width: 20px;
 	height: 20px;
@@ -222,7 +248,7 @@ nav button {
 	transition: background 0.1s;
 	border: #ddd9 solid 0;
 	border-radius: 2px;
-	background: #fffb;
+	background: #fffa;
 	box-shadow: none;
 }
 
@@ -289,10 +315,16 @@ main {
 	justify-content: center;
 }
 
-.sidebar, .front, .back {
+.sidebar, .front {
 	width: 150px;
 	height: 174px;
-  z-index: 9;
+  	z-index: 9;
+}
+
+.sidebar {
+	background: #ffffff07;
+	display: flex;
+	justify-content: center;
 }
 
 .sidebar .wrapper {
@@ -300,7 +332,6 @@ main {
 	display: grid;
 	justify-content: center;
 	align-items: center;
-	background: #fff1;
 	border-top: 20px solid #0cf;
 }
 
@@ -342,7 +373,7 @@ main {
 	color: #222;
 	border: #ddd solid 1px;
 	border-radius: 2px;
-	background: #fff1;
+	background: #ffffff07;
 }
 
 .search ul:hover {
@@ -363,7 +394,7 @@ main {
 }
 
 .banner, .sidebar {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 }
 
 .banner {
@@ -402,13 +433,16 @@ main {
 .front {
 	background: linear-gradient(#eee0, #7775);
 	cursor: zoom-in;
-
 }
 
 .description {
 	height: 174px;
 	width: 74%;
+	margin-left: 10px;
 	display: grid;
+	padding-left: 15px;
+	background: #ffffff07;
+	font-size: 13px;
 }
 
 .about {
@@ -417,6 +451,10 @@ main {
 
 .back {
 	border-top: 5px solid var(--blue);
+	margin-left: 10px;
+	width: 140px;
+	height: 174px;
+	z-index: 9;
 }
 
 .description ul {
@@ -608,7 +646,7 @@ footer .wrapper {
 .modal {
 	position: absolute;
 	width: 600px;
-	height: 360px;
+	height: 350px;
 	background: linear-gradient(to left, #fffd 70%, #eee7 100% );
 	left: 160px;
 	right: 25%;
@@ -675,6 +713,19 @@ footer .wrapper {
 
 .details {
   position: absolute;
+}
+
+.price {
+}
+
+.description ul li:last-child {
+	margin-top: 10px;
+}
+
+.description ul li span{
+	background-color: lightgreen;
+	padding: 5px;
+	border-radius: 2px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -756,7 +807,7 @@ footer .wrapper {
 
 	.about {
 		border-bottom: 2px solid var(--red);
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 
 	.search {
@@ -893,7 +944,7 @@ footer .wrapper {
 	}
 
 	nav button img {
-		width: 95%;
+		width: 90%;
 	}
 
 	.topmenu:hover {
