@@ -9,12 +9,14 @@
   transform: scale(3.4);
   margin-left: 800px;
   margin-top: -200px;
+  cursor: zoom-out !important;
 }
 
 .scaleBackCase {
   transform: scale(3.4);
   margin-right: 400px;
   margin-top: -200px;
+  cursor: zoom-out !important;
 }
 
 .flexEnd {
@@ -92,6 +94,10 @@
   width: 400px;
 }
 
+.cursor {
+  cursor: zoom-in;
+}
+
 :root {
 	--blue: rgb(0, 204, 255);
 	--red: #f42;
@@ -134,11 +140,8 @@ button {
 
 input {
 	outline: 0;
+	border: 1px solid #bbb;
 	background: #ffffff07;
-}
-
-img {
-
 }
 
 body {
@@ -146,7 +149,8 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	color: #5a5a5a;
 	background: url(img/bg.jpg) top center no-repeat;
-	transition: 0.6s background;
+	transition: 0.6s background, 0.3s transform ease-in-out 0.1s;
+	overflow-x: hidden;
 }
 
 header, main, footer {
@@ -261,9 +265,14 @@ nav button:hover {
 	box-shadow: 1px 1px 4px gray;
 }
 
-.func, .social, .lang, .topmenu {
+.social, .lang, .topmenu {
 	display: flex;
 	justify-content: space-around;
+}
+
+.func {
+	display: flex;
+	justify-content: center;
 }
 
 .microsoft {
@@ -422,6 +431,7 @@ main {
 .front img, .back img {
 	width: 100%;
 	transition: 0.2s transform;
+	cursor: zoom-in;
 }
 
 .front, .back {
@@ -432,7 +442,6 @@ main {
 
 .front {
 	background: linear-gradient(#eee0, #7775);
-	cursor: zoom-in;
 }
 
 .description {
@@ -632,6 +641,7 @@ footer .wrapper {
 
 .os li img {
 	width: 20px;
+	cursor: pointer;
 }
 
 .basement {
@@ -650,7 +660,7 @@ footer .wrapper {
 	background: linear-gradient(to left, #fffd 70%, #eee7 100% );
 	left: 160px;
 	right: 25%;
-	z-index: 9;
+	z-index: 11;
 	border-radius: 2px;
 	box-shadow: 2px 2px 2px 1px #fff;
 }
@@ -923,10 +933,6 @@ footer .wrapper {
 		height: 50px;
 		border-top: 1px solid #4448;
 		border-bottom: 1px solid #4448;
-	}
-
-	.func li:nth-child(-n + 2){
-		display: none;
 	}
 
 	.func {

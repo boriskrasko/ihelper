@@ -6,15 +6,19 @@ const cost = document.querySelector('.price');
 const details = document.querySelector('.details');
 const ul = document.body.getElementsByTagName('ul');
 const li = document.querySelectorAll('.l-items');
-let dark = false;
 
+const moon = `<img src="svg/func/moon.svg">`;
+const sun = `<img src="svg/func/sun.svg">`;
+
+let dark = false;
 
 let getDarkMode = () => {
 	document.body.classList.toggle('dark-wallpaper');
-  cost.classList.toggle('light-font');
+    cost.classList.toggle('light-font');
 	footer.classList.toggle('dark-background');
 	footer.classList.toggle('dark-font');
 	details.classList.toggle('dark');
+	moonBtn.innerHTML = (dark) ? moon : sun;
 
 	for (let i = 0; i < listItems.length; i++) {
 		listItems[i].classList.toggle('dark-font');
