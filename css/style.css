@@ -481,7 +481,7 @@ nav:nth-child(2) {
 	align-items: center;
 }
 
-.front, .back {
+.front {
 	background: linear-gradient(#eee0, #7775);
 }
 
@@ -536,6 +536,14 @@ nav:nth-child(2) {
 	height: 24px;
 	padding: 10px;
 	width: 140px;
+	margin-bottom: 10px;
+}
+
+.htmlcontent {
+	padding: 8px;
+}
+
+.htmlcontent p, .htmlcontent h3, .htmlcontent ul {
 	margin-bottom: 10px;
 }
 
@@ -750,7 +758,7 @@ footer .wrapper {
 
 .content div:first-child {
 	width: 60%;
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 .content div:not(:first-child) {
@@ -784,8 +792,8 @@ footer .wrapper {
 }
 
 @media screen and (max-width: 1000px) {
-  .header, .app, footer, .htmlcontent {
-    width: 100%;
+   .header, .app, footer, .htmlcontent {
+    	width: 100%;
   }
 }
 
@@ -926,10 +934,14 @@ footer .wrapper {
 	}
 
 	.support {
-	background: url(../img/thoughtful-young-bearded-manager-typing-on-keyboard-while-3966786.jpg) center ;
-	background-size: 100%;
-	background-repeat: no-repeat;
-}
+		background: url(../img/thoughtful-young-bearded-manager-typing-on-keyboard-while-3966786.jpg) top ;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	.pagetitle {
+		height: 50px;
+	}
 }
 
 @media screen and (max-width: 520px) {
@@ -1075,6 +1087,7 @@ footer .wrapper {
 	.pagename {
 		font-size: 48px;
 	}
+
 } 
 
 @media screen and (max-width: 490px) {
