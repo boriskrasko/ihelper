@@ -6,6 +6,7 @@
 	<title>iHelp</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" type="text/css" href="darkmode.css">
+	<link rel="stylesheet" type="text/css" href="zoom.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 <style>
@@ -25,16 +26,14 @@
 		<div class="topnav">
 			<nav>
 				<ul class="func">
-					<li><button><img src="svg/func/line.svg"></button></li>
-					<li><button><img src="svg/func/add.svg"></button></li>
+					<li><button class="in"><img src="svg/func/add.svg"></button></li>
 					<li><button class="moon"><img src="svg/func/moon.svg"></button></li>
-					<!-- <li><button><img src="svg/func/sun.svg"></button></li> -->
 				</ul>
 				<ul class="social">
-					<li><button name="fb"><img src="svg/social/facebook.svg"></button></li>
-					<li><button name="vk"><img src="svg/social/vk.svg"></button></li>
-					<li><button name="tw"><img src="svg/social/twitter.svg"></button></li>
-					<li><button name="inst"><img src="svg/social/instagram.svg"></button></li>
+					<li><button class="fb"><img src="svg/social/facebook.svg"></button></li>
+					<li><button class="vk"><img src="svg/social/vk.svg"></button></li>
+					<li><button class="tw"><img src="svg/social/twitter.svg"></button></li>
+					<li><button class="inst"><img src="svg/social/instagram.svg"></button></li>
 				</ul>
 				<ul class="lang">
 					<li><button><img src="svg/lang/usa.svg"></button>rus</li>
@@ -145,7 +144,7 @@
         	</div>
 				</div>
 			</div>
-			<div class="back" v-bind:class="[(modalVisible || isScale)  ? 'blur' : '']" v-on:click="isBackCase = !isBackCase; isActive = !isActive; isScale = false">
+			<div class="back" v-bind:class="[(modalVisible || isScale)  ? 'blur' : 'b']" v-on:click="isBackCase = !isBackCase; isActive = !isActive; isScale = false">
 				<img v-bind:src="item.imageBack" v-bind:class="[isBackCase ? 'scaleBackCase' : '']">
 			</div>
 		</div>
@@ -302,6 +301,8 @@
 		</div>
 	</footer>
 <script src="app.js"></script>
+<script src="following.js"></script>
+<script src="zoom.js"></script>
 <script src="darkmode.js"></script>
 </body>
 </html>
