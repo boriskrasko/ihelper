@@ -167,10 +167,6 @@ body {
 	background: url(../img/bg.jpg) top center no-repeat;
 	transition: 0.6s background, 0.1s transform ease-in-out 0.1s;
 	overflow-x: hidden;
-	opacity: 0;
-	transform: translateY(10px);
-	-webkit-animation: fade-in 0.4s 0.3s ease-in-out forwards;
-	animation: fade-in 0.4s 0.3s ease-in-out forwards;
 }
 
 .header, .app, footer, .htmlcontent {
@@ -1195,18 +1191,4 @@ footer .wrapper {
 .modal-leave-to {
 	transform: translateY(100px);
 	opacity: 0
-}
-
-@-webkit-keyframes fade-in {
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes fade-in {
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
 }
