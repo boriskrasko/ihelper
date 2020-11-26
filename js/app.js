@@ -65,7 +65,7 @@ Vue.component('app', {
                         <li><a href="index.html">Main</a></li>
                         <li class="item-m"><a href="">Development</a></li>
                         <li class="item-m"><a href="">Service</a></li>
-                        <li class="item-m"><a href="">Support</a></li>
+                        <li class="item-m"><a href="support.html">Support</a></li>
                         <li><a href="">Services</a></li>
                         <li><a href="">Hosting</a></li>
                         <li><a href="">Contact</a></li>

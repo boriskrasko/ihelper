@@ -7,7 +7,6 @@ const details = document.querySelector('.details');
 const ul = document.body.getElementsByTagName('ul');
 const li = document.querySelectorAll('.l-items');
 const h3 = document.body.getElementsByTagName('h3');
-
 const moon = `<img src="svg/func/moon.svg">`;
 const sun = `<img src="svg/func/sun.svg">`;
 
@@ -19,7 +18,6 @@ let getDarkMode = () => {
 	footer.classList.toggle('dark-background');
 	footer.classList.toggle('dark-font');
 	document.body.classList.toggle('dark-wallpaper');
-
 	for (let i = 0; i < listItems.length; i++) {
 		listItems[i].classList.toggle('dark-font');
 	}
@@ -32,9 +30,24 @@ let getDarkMode = () => {
 	for (let i = 0; i < h3.length; i++) {
 		h3[i].classList.toggle('dark-font');
 	}
-
-	cost.classList.toggle('light-font');
-	details.classList.toggle('dark');
+	if (cost !== null && details !== null) {
+		cost.classList.toggle('light-font');
+		details.classList.toggle('dark');
+	} else {
+		return 0
+	}
 }
 
 moonBtn.addEventListener('click', getDarkMode);
+
+// let today = new Date();
+// let hour = today.getHours();
+
+// getAutoDarkMode = () => {
+// 	return (hour > 6 && hour < 22) ? 0 : getDarkMode();
+// }
+
+// getAutoDarkMode();
+
+
+
