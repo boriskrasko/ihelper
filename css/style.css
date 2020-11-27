@@ -434,7 +434,13 @@ nav:nth-child(2) {
 }
 
 .server {
-	background: url(../img/server.jpg) center;
+	background: url(../img/server.jpg) bottom;
+	background-size: cover;
+
+}
+.datacenter {
+	/*background: url(../img/server.jpg) bottom;*/
+	background-size: cover;
 }
 
 .support {
@@ -451,6 +457,7 @@ nav:nth-child(2) {
 	background: url(../img/man.png) center;
 	background-repeat: no-repeat;
 	background-size: contain;
+
 }
 
 .pagename {
@@ -460,11 +467,11 @@ nav:nth-child(2) {
 	font-size: 64px;
 	left: 35%;
 	display: flex;
+	justify-content: center;
 	align-items: flex-end;
 	bottom: 5%;
 	color: #aaa7;
 	opacity: 0;
-	-webkit-animation: fade-in 1.3s 0.3s ease-in-out forwards;
 	animation: fade-in 1.3s 0.3s ease-in-out forwards;
 }
 
@@ -1193,17 +1200,16 @@ footer .wrapper {
 	opacity: 0
 }
 
-@-webkit-keyframes fade-in {
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
 
 @keyframes fade-in {
 	100% {
 		opacity: 1;
-		transform: translateY(0);
+	}
+}
+
+@keyframes fade-out {
+	100% {
+		opacity: 0;
 	}
 }
 
